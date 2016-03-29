@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LocalStorage Example</title>
+</head>
+<body onload='javascript:loadBGColor()'>
+
+<select id='colors-list'>
+	<option value=''>--Please Select Color--</option>
+	<option value='gold'>Gold</option>
+	<option value='purple'>Purple</option>
+	<option value='violet'>Violet</option>
+	<option value='pink'>Pink</option>
+	<option value='red'>Red</option>
+</select>
+
+<script type="text/javascript">
+	function setBGColor()
+	{
+		var color = document.getElementById('colors-list').value;
+		localStorage.bgColor = color;
+		document.body.style.backgroundColor = color;
+	}
+
+	function loadBGColor()
+	{
+		var color = document.getElementById('colors-list').value;
+		if (color.length == 0) {
+			color = 'white';
+		}
+		if (localStorage.bgColor.length > 0) {
+			color = localStorage.bgColor;
+		}
+		document.body.style.backgroundColor = color;
+	}
+
+	var colorList = document.getElementById('colors-list');
+	colorList.addEventListener('change', setBGColor);
+</script>
+
+</body>
+</html>
